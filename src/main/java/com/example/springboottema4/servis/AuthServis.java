@@ -23,7 +23,7 @@ public class AuthServis {
     public AuthReponse Login(LoginRequest request) {
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsuario(), request.getContraseña()));
-        UserDetails user = userRepository.findbyUsername(request.getUsuario()).orElseThrow();
+        UserDetails user = (UserDetails) userRepository.findbyUsername(request.getUsuario()).orElseThrow();
         String token = jwtServis.getToken(user);
         return AuthReponse.builder()
                 .token(token)
@@ -40,11 +40,10 @@ public class AuthServis {
                 .pais(request.getPais())
                 .codigo_postal(request.getCodigo_postal())
                 .telefono(request.getTelefono())
-                .rol(Rol.User)
                 .build();
         userRepository.save(user);
         return AuthReponse.builder()
-                .token(jwtServis.getToken(user))
+                .token(jwtServis.getToken((UserDetails) user))
                 .build();
 
     }
