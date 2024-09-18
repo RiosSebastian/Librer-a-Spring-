@@ -14,19 +14,19 @@ public class LibreriaMain {
 		ApplicationContext contex=SpringApplication.run(LibreriaMain.class, args);
 		LibrosRepository repository = contex.getBean(LibrosRepository.class);
 
-		/*//CREAR libro
+		//CREAR libro
 		Libros libros1 = new Libros(null, "La odisea","homer", "500" , "hshshshshhshsh");
 		Libros libros2 = new Libros(null, "El principito","homer", "500" , "hshshshshhshsh");
 
 		//ALMACENAR Libro
-		System.out.println("numero de libros en la base de datos " + repository.findAll().size());
+		System.out.println("numero de libros en la base de datos " + repository.findAll());
 		repository.save(libros1);
 		repository.save(libros2);
-		System.out.println("numero de libros en la base de datos " + repository.findAll().size());
+		System.out.println("numero de libros en la base de datos " + repository.findAll());
 
 		//BORRAR libro
 		//repository.deleteById(1l);
-		System.out.println("numero de libros en la base de datos " + repository.findAll().size());*/
+		System.out.println("numero de libros en la base de datos " + repository.findAll());
 	}
 
 }

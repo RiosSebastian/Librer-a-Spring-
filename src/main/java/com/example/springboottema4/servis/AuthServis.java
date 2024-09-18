@@ -23,7 +23,7 @@ public class AuthServis {
     public AuthReponse Login(LoginRequest request) {
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsuario(), request.getContraseña()));
-        UserDetails user = (UserDetails) userRepository.findbyUsername(request.getUsuario()).orElseThrow();
+        UserDetails user = (UserDetails) userRepository.findByusuario(request.getUsuario()).orElseThrow();
         String token = jwtServis.getToken(user);
         return AuthReponse.builder()
                 .token(token)

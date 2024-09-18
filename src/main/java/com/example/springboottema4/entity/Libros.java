@@ -16,7 +16,8 @@ public class Libros {
     private  String numero_paginas;
     private  String sinopcis;
 
-
+    public Libros() {
+    }
 
     public Libros(Long id, String nombre_libro, String nombre_autor, String numero_paginas, String sinopcis) {
         this.id = id;
